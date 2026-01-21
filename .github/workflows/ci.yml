@@ -11,12 +11,11 @@ on:
 jobs:
   build-fabric:
     runs-on: ubuntu-latest
-    container: ghcr.io/dlobato/netops/avd:5.7.0-python3.13-trixie-slim-e5716cc
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
       - name: Build fabric
-        shell: /entrypoint.sh
+        uses: ghcr.io/dlobato/netops/avd:5.7.0-python3.13-trixie-slim-e5716cc
         run: ansible-playbook build.yml -i inventory.yml
       - name: Upload build artifacts
         uses: actions/upload-artifact@v6
